@@ -1,4 +1,4 @@
-from app.main import add, greet
+from app.main import add, farewell, greet
 
 
 def test_feat_1_add():
@@ -12,3 +12,8 @@ def test_feat_1_greeter():
 def test_feat_2_greet_blank_name():
     assert greet("  ") == "Hello, world!"
     assert greet() == "Hello, world!"
+
+
+def test_feat_12_farewell():
+    assert farewell("World") == "Goodbye, World!"
+    assert farewell(" ") == "Goodbye, world!"
