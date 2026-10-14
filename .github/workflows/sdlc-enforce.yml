@@ -34,8 +34,13 @@ jobs:
           TOKEN=$(curl --fail --silent --show-error \
             -H "Authorization: bearer ${ACTIONS_ID_TOKEN_REQUEST_TOKEN}" \
             "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=lanesync" | jq -er .value)
-          curl --fail --silent --show-error \
+          RESPONSE=$(curl --fail --silent --show-error \
             -H "Authorization: Bearer ${TOKEN}" \
-            "${LANESYNC_API_URL}/api/ci/effective-config?org=${OWNER}&repo=${REPOSITORY}" \
-            | jq -e '.fingerprint and .developmentBranch' >/dev/null
-          echo "Effective SDLC configuration verified by LaneSync."
+            "${LANESYNC_API_URL}/api/ci/effective-config?org=${OWNER}&repo=${REPOSITORY}")
+          echo "${RESPONSE}" | jq -e '.fingerprint and .developmentBranch' >/dev/null
+          if echo "${RESPONSE}" | jq -e '.setupPending == true' >/dev/null; then
+            # LaneSync's setup PR: its sdlc.yaml is valid; enforcement starts after merge.
+            echo "Setup in progress — configuration valid. LaneSync enforces it after the setup PR merges."
+          else
+            echo "Effective SDLC configuration verified by LaneSync."
+          fi
