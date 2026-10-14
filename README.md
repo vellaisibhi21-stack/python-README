@@ -21,3 +21,9 @@ from app.main import greet
 greet("Ana")  # "Hello, Ana!"
 greet()       # "Hello, world!"
 ```
+
+```python
+from app.main import shout
+
+shout("Ana")  # "HELLO, ANA!"
+```
