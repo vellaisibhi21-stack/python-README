@@ -12,3 +12,12 @@ pytest          # runs tests with HTML + coverage reports
 
 CI runs automatically on every PR and push via `.github/workflows` (managed by LaneSync).
 Replace the sample code in `src/app/` and tests in `tests/` with your own.
+
+## Usage
+
+```python
+from app.main import greet
+
+greet("Ana")  # "Hello, Ana!"
+greet()       # "Hello, world!"
+```
