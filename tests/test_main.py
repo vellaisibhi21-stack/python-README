@@ -17,3 +17,7 @@ def test_feat_2_greet_blank_name():
 def test_feat_12_farewell():
     assert farewell("World") == "Goodbye, World!"
     assert farewell(" ") == "Goodbye, world!"
+
+
+def test_bug_14_farewell_collapses_whitespace():
+    assert farewell("  Ada   Lovelace ") == "Goodbye, Ada Lovelace!"

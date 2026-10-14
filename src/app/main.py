@@ -8,7 +8,7 @@ def greet(name: str = "") -> str:
 
 
 def farewell(name: str = "") -> str:
-    name = name.strip()
+    name = " ".join(name.split())
     return f"Goodbye, {name}!" if name else "Goodbye, world!"
 
 
