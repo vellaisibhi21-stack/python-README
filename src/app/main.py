@@ -20,5 +20,9 @@ def whisper(name: str = "") -> str:
     return greet(name).lower()
 
 
+def wave(name: str = "") -> str:
+    return f"\N{WAVING HAND SIGN} {greet(name)}"
+
+
 if __name__ == "__main__":
     print(greet("LaneSync"))
