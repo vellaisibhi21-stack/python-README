@@ -38,9 +38,25 @@ jobs:
 
       - name: Run unit tests
         run: |
+          # Line coverage measures your code, not your tests: test files are always ~100% covered
+          # and would inflate the coverage gate. Paths stay relative to the repository root.
+          # A coverage config of your own (.coveragerc, [tool.coverage.*] in pyproject.toml,
+          # [coverage:*] in setup.cfg or tox.ini) takes precedence over these defaults.
+          if [ -f .coveragerc ] || grep -qs '^\[tool\.coverage' pyproject.toml \
+            || grep -qs '^\[coverage:' setup.cfg tox.ini; then
+            COV_ARGS="--cov"
+          else
+            COV_RC="${RUNNER_TEMP:-/tmp}/lanesync-coveragerc"
+            printf '%s\n' '[run]' 'omit =' \
+              '    tests/*' '    test/*' '    */tests/*' '    */test/*' \
+              '    test_*.py' '    */test_*.py' '    *_test.py' \
+              '    conftest.py' '    */conftest.py' '    setup.py' \
+              '    .venv/*' '    venv/*' '    build/*' '    dist/*' > "$COV_RC"
+            COV_ARGS="--cov=. --cov-config=$COV_RC"
+          fi
           pytest --html=unit-tests.html --self-contained-html \
                  --junitxml=pytest-junit.xml \
-                 --cov=. --cov-report=html:coverage --cov-report=xml:coverage/cobertura.xml 2>/dev/null || TEST_EXIT=$?
+                 $COV_ARGS --cov-report=html:coverage --cov-report=xml:coverage/cobertura.xml 2>/dev/null || TEST_EXIT=$?
           [ "${TEST_EXIT:-0}" -eq 5 ] && TEST_EXIT=0
           [ -f unit-tests.html ] || echo "<html><body><h1>Unit Tests</h1><p>No tests yet — add pytest tests to get started.</p></body></html>" > unit-tests.html
           mkdir -p coverage
