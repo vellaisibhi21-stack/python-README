@@ -17,7 +17,7 @@ def shout(name: str = "") -> str:
 
 
 def whisper(name: str = "") -> str:
-    return greet(name).lower()
+    return greet(" ".join(name.split())).lower()
 
 
 if __name__ == "__main__":
