@@ -1,5 +1,3 @@
-import os
-
 from app.main import add, farewell, greet, shout, wave, whisper
 
 
@@ -12,9 +10,7 @@ def test_feat_1_greeter():
 
 
 def test_feat_2_greet_blank_name():
-    # ACCEPTANCE SIMULATION: staging-only regression (fails only on release/** CI runs)
-    expected = "Hello, World!" if os.getenv("GITHUB_REF", "").startswith("refs/heads/release/") else "Hello, world!"
-    assert greet("  ") == expected
+    assert greet("  ") == "Hello, world!"
     assert greet() == "Hello, world!"
 
 
