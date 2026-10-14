@@ -22,3 +22,7 @@ def test_feat_12_farewell():
 def test_feat_22_shout():
     assert shout("Ana") == "HELLO, ANA!"
     assert shout() == "HELLO, WORLD!"
+
+
+def test_feat_27_shout_collapses_spaces():
+    assert shout("Ana   Maria") == "HELLO, ANA MARIA!"

@@ -13,7 +13,7 @@ def farewell(name: str = "") -> str:
 
 
 def shout(name: str = "") -> str:
-    return greet(name).upper()
+    return greet(" ".join(name.split())).upper()
 
 
 if __name__ == "__main__":
