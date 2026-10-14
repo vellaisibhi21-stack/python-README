@@ -12,5 +12,9 @@ def farewell(name: str = "") -> str:
     return f"Goodbye, {name}!" if name else "Goodbye, world!"
 
 
+def shout(name: str = "") -> str:
+    return greet(name).upper()
+
+
 if __name__ == "__main__":
     print(greet("LaneSync"))
