@@ -27,3 +27,7 @@ def test_feat_22_shout():
 def test_feat_36_whisper():
     assert whisper("Ana") == "hello, ana!"
     assert whisper() == "hello, world!"
+
+
+def test_bug_38_whisper_collapses_spaces():
+    assert whisper("Ana   Lee") == "hello, ana lee!"
