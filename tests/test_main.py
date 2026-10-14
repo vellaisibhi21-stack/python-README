@@ -1,4 +1,4 @@
-from app.main import add, farewell, greet, shout
+from app.main import add, farewell, greet, shout, whisper
 
 
 def test_feat_1_add():
@@ -22,3 +22,8 @@ def test_feat_12_farewell():
 def test_feat_22_shout():
     assert shout("Ana") == "HELLO, ANA!"
     assert shout() == "HELLO, WORLD!"
+
+
+def test_feat_36_whisper():
+    assert whisper("Ana") == "hello, ana!"
+    assert whisper() == "hello, world!"
