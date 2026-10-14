@@ -7,3 +7,8 @@ def test_feat_1_add():
 
 def test_feat_1_greeter():
     assert greet("World") == "Hello, World!"
+
+
+def test_feat_2_greet_blank_name():
+    assert greet("  ") == "Hello, world!"
+    assert greet() == "Hello, world!"
