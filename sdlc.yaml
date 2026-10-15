@@ -1,6 +1,7 @@
 version: v1
 name: your-app-name
 quality_gates:
+  regressions: block
   coverage:
     min_line_percent: 80
   security:
@@ -48,3 +49,5 @@ stages:
       inputs:
         release_version: "{{release_version}}"
         candidate_sha: "{{candidate_sha}}"
+traceability:
+  mode: strict
