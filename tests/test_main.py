@@ -40,3 +40,7 @@ def test_bug_50_whisper_keeps_trailing_emoji():
 def test_feat_49_cheer():
     assert cheer("Ana") == "Hello, Ana! \N{PARTY POPPER}"
     assert cheer() == "Hello, world! \N{PARTY POPPER}"
+
+
+def test_bug_61_blank_name_same_on_every_build():
+    assert greet("\t") == "Hello, world!"
