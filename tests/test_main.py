@@ -1,4 +1,4 @@
-from app.main import add, farewell, greet, shout, wave, whisper
+from app.main import add, cheer, farewell, greet, shout, wave, whisper
 
 
 def test_feat_1_add():
@@ -31,3 +31,8 @@ def test_feat_36_whisper():
 
 def test_feat_41_wave():
     assert wave("Ana") == "\N{WAVING HAND SIGN} Hello, Ana!"
+
+
+def test_feat_49_cheer():
+    assert cheer("Ana") == "Hello, Ana! \N{PARTY POPPER}"
+    assert cheer() == "Hello, world! \N{PARTY POPPER}"
