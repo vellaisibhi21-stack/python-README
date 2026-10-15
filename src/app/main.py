@@ -7,8 +7,8 @@ def greet(name: str | None = "") -> str:
     return f"Hello, {name}!" if name else "Hello, world!"
 
 
-def farewell(name: str = "") -> str:
-    name = name.strip()
+def farewell(name: str | None = "") -> str:
+    name = (name or "").strip()
     return f"Goodbye, {name}!" if name else "Goodbye, world!"
 
 
