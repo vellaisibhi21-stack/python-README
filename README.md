@@ -27,3 +27,11 @@ from app.main import shout
 
 shout("Ana")  # "HELLO, ANA!"
 ```
+
+## cheer()
+
+```python
+from app.main import cheer
+
+cheer("Ana")  # "Hello, Ana! 🎉"
+```
