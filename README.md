@@ -35,3 +35,5 @@ from app.main import cheer
 
 cheer("Ana")  # "Hello, Ana! 🎉"
 ```
+
+`farewell(None)` and `greet(None)` treat a missing name as no name.
