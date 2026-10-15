@@ -25,5 +25,9 @@ def wave(name: str = "") -> str:
     return f"\N{WAVING HAND SIGN} {greet(name)}"
 
 
+def cheer(name: str = "") -> str:
+    return f"{greet(name)} \N{PARTY POPPER}"
+
+
 if __name__ == "__main__":
     print(greet("LaneSync"))
