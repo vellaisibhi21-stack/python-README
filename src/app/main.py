@@ -2,8 +2,8 @@ def add(a: int, b: int) -> int:
     return a + b
 
 
-def greet(name: str = "") -> str:
-    name = name.strip()
+def greet(name: str | None = "") -> str:
+    name = (name or "").strip()
     return f"Hello, {name}!" if name else "Hello, world!"
 
 

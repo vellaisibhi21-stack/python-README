@@ -33,6 +33,8 @@ def test_feat_41_wave():
     assert wave("Ana") == "\N{WAVING HAND SIGN} Hello, Ana!"
 
 
+def test_bug_52_greet_none_name():
+    assert greet(None) == "Hello, world!"
 def test_bug_50_whisper_keeps_trailing_emoji():
     assert whisper("Ana \N{SLIGHTLY SMILING FACE}") == "hello, ana \N{SLIGHTLY SMILING FACE}!"
 def test_feat_49_cheer():
