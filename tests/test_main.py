@@ -31,3 +31,7 @@ def test_feat_36_whisper():
 
 def test_feat_41_wave():
     assert wave("Ana") == "\N{WAVING HAND SIGN} Hello, Ana!"
+
+
+def test_bug_57_shout_empty_name():
+    assert shout("") == "HELLO, WORLD!"
