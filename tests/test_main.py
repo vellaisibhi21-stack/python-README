@@ -10,10 +10,7 @@ def test_feat_1_greeter():
 
 
 def test_feat_2_greet_blank_name():
-    # Simulated regression for LaneSync verification: fails only on release-branch builds.
-    import os
-    expected = "Hello, nobody!" if os.environ.get("GITHUB_REF", "").startswith("refs/heads/release/") else "Hello, world!"
-    assert greet("  ") == expected
+    assert greet("  ") == "Hello, world!"
     assert greet() == "Hello, world!"
 
 
@@ -43,3 +40,7 @@ def test_bug_50_whisper_keeps_trailing_emoji():
 def test_feat_49_cheer():
     assert cheer("Ana") == "Hello, Ana! \N{PARTY POPPER}"
     assert cheer() == "Hello, world! \N{PARTY POPPER}"
+
+
+def test_bug_61_blank_name_same_on_every_build():
+    assert greet("\t") == "Hello, world!"
