@@ -144,9 +144,7 @@ jobs:
           BRANCH_NAME=${GITHUB_REF#refs/heads/}
           if [[ "$BRANCH_NAME" == "main" ]]; then
             NEW_TAG="dev-${SHA_SHORT}"
-          elif [[ "$BRANCH_NAME" == release/* ]]; then
-            VERSION=${BRANCH_NAME#release/}
-            NEW_TAG="${VERSION}-rc-${SHA_SHORT}"
+          # Release candidates are tagged <release>-rc.<N> by LaneSync when it pins them (#155).
           else
             echo "Branch not targeted for auto-tagging."; exit 0
           fi

@@ -282,13 +282,13 @@ runs:
         jq -n \
           --arg org "$ORG" --arg repo "${GITHUB_REPOSITORY#*/}" \
           --arg version "$VERSION" --arg env "$ENVIRONMENT" --arg pipeline "$PIPELINE" \
-          --arg run_id "${GITHUB_RUN_ID:-}" \
+          --arg run_id "${GITHUB_RUN_ID:-}" --arg head_sha "${GITHUB_SHA:-}" \
           --slurpfile metrics "$OUT/metrics.json" --slurpfile reports "$OUT/reports.json" \
           --slurpfile tests "$OUT/tests.json" --slurpfile cov "$OUT/coverage.json" \
           --slurpfile sast "$OUT/sast.json" --slurpfile cve "$OUT/cve.json" \
           '{
             org: $org, repo: $repo, version: $version, environment: $env, pipeline: $pipeline,
-            run_id: $run_id,
+            run_id: $run_id, head_sha: $head_sha,
             metrics: $metrics[0], reports: $reports[0],
             test_report_files: $tests[0], coverage_files: $cov[0],
             sast_files: $sast[0], cve_files: $cve[0]
