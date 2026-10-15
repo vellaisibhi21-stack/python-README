@@ -46,5 +46,5 @@ def test_bug_61_blank_name_same_on_every_build():
     assert greet("\t") == "Hello, world!"
 
 
-def test_farewell_none():
+def test_bug_66_farewell_none_is_no_name():
     assert farewell(None) == "Goodbye, world!"
