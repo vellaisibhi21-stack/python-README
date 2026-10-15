@@ -35,6 +35,8 @@ def test_feat_41_wave():
 
 def test_bug_52_greet_none_name():
     assert greet(None) == "Hello, world!"
+def test_bug_50_whisper_keeps_trailing_emoji():
+    assert whisper("Ana \N{SLIGHTLY SMILING FACE}") == "hello, ana \N{SLIGHTLY SMILING FACE}!"
 def test_feat_49_cheer():
     assert cheer("Ana") == "Hello, Ana! \N{PARTY POPPER}"
     assert cheer() == "Hello, world! \N{PARTY POPPER}"

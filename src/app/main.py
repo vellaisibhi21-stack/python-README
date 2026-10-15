@@ -17,7 +17,8 @@ def shout(name: str = "") -> str:
 
 
 def whisper(name: str = "") -> str:
-    return greet(name).lower()
+    # Lower-case letters only; emoji and other symbols in the name are kept as given.
+    return "".join(c.lower() if c.isalpha() else c for c in greet(name))
 
 
 def wave(name: str = "") -> str:
