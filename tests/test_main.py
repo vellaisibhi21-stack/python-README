@@ -44,3 +44,7 @@ def test_feat_49_cheer():
 
 def test_farewell_none():
     assert farewell(None) == "Goodbye, world!"
+
+
+def test_feat_90_farewell_after_greeting():
+    assert greet("Ana") + " " + farewell("Ana") == "Hello, Ana! Goodbye, Ana!"
