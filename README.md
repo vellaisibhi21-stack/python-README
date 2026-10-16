@@ -35,3 +35,4 @@ from app.main import cheer
 
 cheer("Ana")  # "Hello, Ana! 🎉"
 ```
+Goodbye from python-README (v0.1.6).
